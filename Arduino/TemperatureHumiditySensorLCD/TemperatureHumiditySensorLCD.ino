@@ -14,7 +14,7 @@ void setup(){
 void loop()
 {
   int chk = DHT.read11(DHT11_PIN);
-  lcd.setCursor(0,0); 
+  lcd.setCursor(0,0);
   lcd.print("T: ");
   lcd.print(DHT.temperature);
   lcd.print((char)223);
@@ -25,5 +25,3 @@ void loop()
   lcd.print("%");
   delay(1000);
 }
-
-
