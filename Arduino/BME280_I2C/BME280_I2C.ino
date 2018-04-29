@@ -1,15 +1,23 @@
 #include <Wire.h>
-
+#include <LiquidCrystal_I2C.h> //LCD
 #include <dht.h>
 
+//Grove Light Sensor
+#include "Arduino.h"
+#include "SI114X.h"
+SI114X SI1145 = SI114X();
+
 dht DHT;
+
+LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 #define DHT11_PIN 7
 
 #define BME280_ADDRESS 0x76
 unsigned long int hum_raw,temp_raw,pres_raw;
 signed long int t_fine;
-
+const double sea_press = 1013.25;
+float getAltitude;
 
 uint16_t dig_T1;
  int16_t dig_T2;
@@ -47,12 +55,14 @@ void setup()
     Serial.begin(9600);
     Wire.begin();
 
+    lcd.begin();
+
+
     writeReg(0xF2,ctrl_hum_reg);
     writeReg(0xF4,ctrl_meas_reg);
     writeReg(0xF5,config_reg);
     readTrim();                    //
 }
-
 
 void loop()
 {
@@ -68,6 +78,9 @@ void loop()
     temp_act = (double)temp_cal / 100.0;
     press_act = (double)press_cal / 100.0;
     hum_act = (double)hum_cal / 1024.0;
+
+    getAltitude = ((pow((sea_press / press_act), 1/5.257) - 1.0) * (temp_act + 273.15)) / 0.0065; //Pressure to Altitude Equation
+
     Serial.print("TEMP : ");
     Serial.print(temp_act);
     Serial.print(" DegC  PRESS : ");
@@ -76,14 +89,32 @@ void loop()
     Serial.print(hum_act);
     Serial.println(" %");
 
-    Serial.print("sensor2");
-    int chk = DHT.read11(DHT11_PIN);
-    Serial.print("Temperature = ");
-    Serial.println(DHT.temperature);
-    Serial.print("Humidity = ");
-    Serial.println(DHT.humidity);
+//Lcd Pressure
+    lcd.setCursor(0, 0);
+    lcd.print("Pressure:");
+    lcd.setCursor(9, 0);
+    lcd.print(press_act);
+//Lcd Altitude
+    lcd.setCursor(0, 1);
+    lcd.print("Alt:");
+    lcd.setCursor(4, 1);
+    lcd.print(getAltitude);
+    delay(1500);
+    lcd.clear();
+//Lcd Temperature
+    lcd.setCursor(0, 0);
+    lcd.print("Temp:");
+    lcd.setCursor(5, 0);
+    lcd.print(temp_act);
+//Lcd Pressure
+    lcd.setCursor(0, 1);
+    lcd.print("Humidity:");
+    lcd.setCursor(9, 1);
+    lcd.print(hum_act);
+    delay(1500);
+    lcd.clear();
 
-    delay(1000);
+//Grove Light Sensor
 }
 void readTrim()
 {
@@ -213,3 +244,4 @@ unsigned long int calibration_H(signed long int adc_H)
    v_x1 = (v_x1 > 419430400 ? 419430400 : v_x1);
    return (unsigned long int)(v_x1 >> 12);
 }
+
