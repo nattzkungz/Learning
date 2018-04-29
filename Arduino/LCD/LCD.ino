@@ -2,25 +2,31 @@
 #include <LiquidCrystal_I2C.h>
 // Set the LCD address to 0x3F for a 16 chars and 2 line display
 LiquidCrystal_I2C lcd(0x27, 16, 2);
-int i =1000;
-void setup()
-{
-  // initialize the LCD
+void setup() {
   lcd.begin();
-  // Turn on the blacklight and print a message.
-  lcd.backlight();
-  lcd.print("Hello, world!");
-  lcd.setCursor(0, 1);
-  lcd.print("BCC166");
-  delay(10000);9
-  lcd.clear();
+}
+
+void loop() {
+  // set the cursor to (0,0):
   lcd.setCursor(0, 0);
-  lcd.print("Bomb activated");
-  lcd.setCursor(0, 1);
-  lcd.print("Timer: ");
+  // print from 0 to 9:
+  for (int thisChar = 0; thisChar < 10; thisChar++) {
+    lcd.print(thisChar);
+    delay(500);
+  }
+
+  // set the cursor to (16,1):
+  lcd.setCursor(16, 1);
+  // set the display to automatically scroll:
+  lcd.autoscroll();
+  // print from 0 to 9:
+  for (int thisChar = 0; thisChar < 10; thisChar++) {
+    lcd.print(thisChar);
+    delay(500);
+  }
+  // turn off automatic scrolling
+  lcd.noAutoscroll();
+
+  // clear screen for the next loop:
+  lcd.clear();
 }
-
-void loop(){
-
-}
-
