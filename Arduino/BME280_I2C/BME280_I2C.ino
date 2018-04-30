@@ -89,8 +89,8 @@ void loop()
     Serial.print(hum_act);
     Serial.println(" %");
 
-//Lcd Line 0 :Pressure, Altitude
-    lcd.setCursor(0, 0);
+//Lcd with scroll Line 0 :Pressure, Altitude
+/*    lcd.setCursor(0, 0);
     lcd.print("Pressure: ");
     lcd.print(press_act);
     lcd.print("  Alt: ");
@@ -100,9 +100,15 @@ void loop()
       lcd.scrollDisplayLeft();
       // wait a bit:
       delay(300);
-    }
+    }*/
+
+//Lcd Pressure
+    lcd.setCursor(0, 0);
+    lcd.print("Pressure:");
+    lcd.setCursor(9, 0);
+    lcd.print(press_act);
 //Lcd Altitude
-  /*  lcd.setCursor(0, 1);
+    lcd.setCursor(0, 1);
     lcd.print("Alt:");
     lcd.setCursor(4, 1);
     lcd.print(getAltitude);
@@ -120,7 +126,7 @@ void loop()
     lcd.print(hum_act);
     delay(1500);
     lcd.clear();
-*/
+
 //Grove Light Sensor
 
 }
@@ -252,4 +258,3 @@ unsigned long int calibration_H(signed long int adc_H)
    v_x1 = (v_x1 > 419430400 ? 419430400 : v_x1);
    return (unsigned long int)(v_x1 >> 12);
 }
-
