@@ -87,7 +87,9 @@ void loop()
     Serial.print(press_act);
     Serial.print(" hPa  HUM : ");
     Serial.print(hum_act);
-    Serial.println(" %");
+    Serial.print(" %");
+    Serial.print(" Alt :");
+    Serial.println(getAltitude);
 
 //Lcd with scroll Line 0 :Pressure, Altitude
 /*    lcd.setCursor(0, 0);
