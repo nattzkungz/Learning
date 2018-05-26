@@ -19,7 +19,16 @@ int highVisible = 0;
 int i = 0;
 int n = 0;
 
+long previousMillis = 0;        // will store last time LED was updated
+long interval = 50;           // interval at which to blink (milliseconds)
+
 void setup() {
+  unsigned long currentMillis = millis();
+
+  if(currentMillis - previousMillis > interval) {
+    // save the last time you blinked the LED
+    previousMillis = currentMillis;
+
   motor.setStepDuration(1);
   SI1145.Begin();
   Serial.begin(9600);
@@ -52,6 +61,3 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
 }
-
-
-
