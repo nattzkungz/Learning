@@ -129,8 +129,6 @@ void loop()
     delay(1500);
     lcd.clear();
 
-//Grove Light Sensor
-
 }
 void readTrim()
 {
