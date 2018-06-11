@@ -1,7 +1,16 @@
 body {
-  color: blue;
+  color: black;
   background-color: yellow;
 }
 h1 {
 	color: red;
+  border: solid black 5px;
+}
+h2 {
+
+}
+img {
+  border: dotted gray 5px;
+  position: relative;
+  left: 100px;
 }
