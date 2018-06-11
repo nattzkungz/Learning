@@ -1,16 +1,17 @@
 body {
   color: black;
-  background-color: yellow;
+  background-color: #ffef99;
 }
 h1 {
 	color: red;
   border: solid black 5px;
+  text-align: center;
 }
 h2 {
 
 }
 img {
-  border: dotted gray 5px;
+  border: dotted orange 5px;
   position: relative;
   left: 100px;
 }
