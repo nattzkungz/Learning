@@ -1,6 +1,7 @@
 <head>
   <title>My first HTML document</title>
-  <link rel="stylesheet" href="/css/master.css">
+  <link rel="stylesheet" href="css/master.css">
+  <script src="scripts/main.js"></script>
 </head>
 
 <body>
@@ -22,7 +23,11 @@
       <h3>CssIntro</h3>
     </a>
   </div>
-  <div>
-    <h2>Media</h2>
-  </div>
-</body>
+  <button type="button" onclick="alert('HELLO TO MY WEBSITE!');">
+    Try Me
+  </button>
+  <br>
+  <button type="button" onclick="revealMessage()">Try Me V2</button>
+  <p id="hiddenMessage" style="display:none">You have been trick!</p>
+  <br>
+  <button type="button" id="countdown" onclick="countdown()">10</button>
