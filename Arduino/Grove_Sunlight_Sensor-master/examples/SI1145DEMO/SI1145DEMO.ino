@@ -7,6 +7,7 @@
 
 #include "Arduino.h"
 #include "SI114X.h"
+float uv;
 
 SI114X SI1145 = SI114X();
 
@@ -27,6 +28,19 @@ void loop() {
   Serial.print("Vis: "); Serial.println(SI1145.ReadVisible());
   Serial.print("IR: "); Serial.println(SI1145.ReadIR());
   //the real UV value must be div 100 from the reg value , datasheet for more information.
-  Serial.print("UV: ");  Serial.println((float)SI1145.ReadUV()/100);
+  uv = (float)SI1145.ReadUV()/100;
+  Serial.print("UV: ");  Serial.println(uv);
+  if (uv <= 3) {
+    Serial.print("Warning:"); Serial.println("Wear Sun Glass; Low UV");
+  } else if (uv > 3 && uv <= 6) {
+    Serial.print("Warning:"); Serial.println("Take cover when avalible; Moderate UV");
+  } else if (uv > 6 && uv >= 8) {
+    Serial.print("Warning:"); Serial.println("Apply SPF 30+ sunscreen, don't stay out more than 3 hours; High UV");
+  } else if (uv > 8 && uv >= 11) {
+    Serial.print("Warning:"); Serial.println("Do not stay in the sun for too long; Very High UV");
+  } else {
+    Serial.print("Warning:"); Serial.println("Take all Percautions; Extreme UV");
+  }
   delay(1000);
 }
+
