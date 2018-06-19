@@ -11,6 +11,8 @@ sys.path.append('./SDL_Pi_SI1145');
 import time
 
 import RPi.GPIO as GPIO
+import pigpio
+pi = pigpio.pi()
 
 #set up Servo
 GPIO.setmode(GPIO.BOARD)
@@ -39,7 +41,7 @@ def killLogger():
     exit()
 
 def readSunLight():
-	
+
         vis = sensor.readVisible()
         IR = sensor.readIR()
         UV = sensor.readUV()
@@ -57,11 +59,23 @@ def readSunLight():
 	returnValue.append(uvIndex)
 	return returnValue
 
+#servo test
+    pi.set_servo_pulsewidth(17, 1000)
+    time.sleep(0.5)
+    pi.set_servo_pulsewidth(17, 1500)
+    time.sleep(0.5)
+    pi.set_servo_pulsewidth(17, 2000)
+    time.sleep(0.5)
+    pi.set_servo_pulsewidth(17, 1500)
+    time.sleep(0.5)
+
+#switch servo off
+    pi.set_servo_pulsewidth(17, 0);
 
 print "-----------------"
 print "SunIOT"
 print ""
-print "SwitchDoc Labs" 
+print "SwitchDoc Labs"
 print "-----------------"
 print ""
 
@@ -75,19 +89,19 @@ if __name__ == '__main__':
 	# we run the functions here to test them.
 	#tick()
 	#print readSunLight()
-	
+
 
 
 	# prints out the date and time to console
     	scheduler.add_job(tick, 'interval', seconds=60)
 
-	# IOT Jobs are scheduled here (more coming next issue) 
+	# IOT Jobs are scheduled here (more coming next issue)
 	scheduler.add_job(readSunLight, 'interval', seconds=1)
-	
+
     	# start scheduler
 	scheduler.start()
 	print "-----------------"
-	print "Scheduled Jobs" 
+	print "Scheduled Jobs"
 	print "-----------------"
     	scheduler.print_jobs()
 	print "-----------------"
@@ -101,4 +115,3 @@ if __name__ == '__main__':
     	except (KeyboardInterrupt, SystemExit):
         	# Not strictly necessary if daemonic mode is enabled but should be done if possible
         	scheduler.shutdown
-
