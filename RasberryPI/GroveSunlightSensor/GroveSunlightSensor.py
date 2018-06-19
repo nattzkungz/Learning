@@ -62,15 +62,14 @@ def readSunLight():
 
         if UV <= 3 :
             print "Warning:" + "Wear Sun Glass; Low UV"
-        elif UV > 3 && UV <= 6 :
+        elif UV > 3 and UV <= 6 :
             print "Warning:" + "Take cover when avalible; Moderate UV"
-        elif UV > 6 && UV >= 8 :
+        elif UV > 6 and UV >= 8 :
             print "Warning:" + "Apply SPF 30+ sunscreen, don't stay out more than 3 hours; High UV"
-        elif UV > 8 && UV >= 11 :
+        elif UV > 8 and UV >= 11 :
             print "Warning:" + "Do not stay in the sun for too long; Very High UV"
         else :
             print "Warning:" + "Take all Percautions; Extreme UV"
-
 
 
       time.sleep(1)
