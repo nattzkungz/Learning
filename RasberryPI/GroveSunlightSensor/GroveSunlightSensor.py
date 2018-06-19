@@ -71,9 +71,6 @@ def readSunLight():
         else :
             print "Warning:" + "Take all Percautions; Extreme UV"
 
-
-      time.sleep(1)
-
 	returnValue = []
 	returnValue.append(vis)
 	returnValue.append(IR)
