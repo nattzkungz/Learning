@@ -50,7 +50,7 @@ def blinkLED(times,length):
 
 
 def readSunLight():
-	
+
         vis = sensor.readVisible()
         IR = sensor.readIR()
         UV = sensor.readUV()
@@ -60,7 +60,19 @@ def readSunLight():
         print '		IR:              ' + str(IR)
         print '		UV Index:        ' + str(uvIndex)
 
-	blinkLED(2,0.200)
+        if (uv <= 3) {
+        print("Warning:"); print("Wear Sun Glass; Low UV");
+      } else if (uv > 3 && uv <= 6) {
+        print("Warning:"); print("Take cover when avalible; Moderate UV");
+      } else if (uv > 6 && uv >= 8) {
+        print("Warning:"); print("Apply SPF 30+ sunscreen, don't stay out more than 3 hours; High UV");
+      } else if (uv > 8 && uv >= 11) {
+        print("Warning:"); print("Do not stay in the sun for too long; Very High UV");
+      } else {
+        print("Warning:"); print("Take all Percautions; Extreme UV");
+      }
+
+      time.sleep(1)
 
 	returnValue = []
 	returnValue.append(vis)
@@ -72,7 +84,7 @@ def readSunLight():
 print "-----------------"
 print "SunIOT"
 print ""
-print "SwitchDoc Labs" 
+print "SwitchDoc Labs"
 print "-----------------"
 print ""
 
@@ -86,7 +98,7 @@ if __name__ == '__main__':
 	# we run the functions here to test them.
 	#tick()
 	#print readSunLight()
-	
+
 
 
 	# prints out the date and time to console
@@ -94,13 +106,13 @@ if __name__ == '__main__':
     	# blink life light
 	scheduler.add_job(blinkLED, 'interval', seconds=5, args=[1,0.250])
 
-	# IOT Jobs are scheduled here (more coming next issue) 
+	# IOT Jobs are scheduled here (more coming next issue)
 	scheduler.add_job(readSunLight, 'interval', seconds=1)
-	
+
     	# start scheduler
 	scheduler.start()
 	print "-----------------"
-	print "Scheduled Jobs" 
+	print "Scheduled Jobs"
 	print "-----------------"
     	scheduler.print_jobs()
 	print "-----------------"
