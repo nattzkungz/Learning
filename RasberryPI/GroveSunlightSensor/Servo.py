@@ -14,6 +14,6 @@ pi.set_servo_pulsewidth(17, 1500)
 time.sleep(0.5)
 
 # switch servo off
-pi.set_servo_pulsewidth(17, 0);
+#pi.set_servo_pulsewidth(17, 0);
 
 pi.stop()
