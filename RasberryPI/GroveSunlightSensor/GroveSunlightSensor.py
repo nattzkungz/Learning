@@ -99,15 +99,14 @@ if __name__ == '__main__':
 
 
 	# prints out the date and time to console
-    scheduler.add_job(tick, 'interval', seconds=60)
-
-    # blink life light
+    	scheduler.add_job(tick, 'interval', seconds=60)
+    	# blink life light
 	scheduler.add_job(blinkLED, 'interval', seconds=5, args=[1,0.250])
 
 	# IOT Jobs are scheduled here (more coming next issue)
 	scheduler.add_job(readSunLight, 'interval', seconds=1)
 
-    # start scheduler
+    	# start scheduler
 	scheduler.start()
 	print "-----------------"
 	print "Scheduled Jobs"
