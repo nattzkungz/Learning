@@ -4,15 +4,14 @@ import pigpio
 
 pi = pigpio.pi() # Connect to local Pi.
 
-for x in range(2,6):
-    print(x+1)
+int pulse
+
+for x in range(200):
+    pulse = x * 10
+    time.sleep(0.2)
+    set_servo_pulsewidth(4, pulse)
     pass
 
-fruits = ["apple", "banana", "cherry"]
-for x in fruits:
-  if x == "banana":
-    continue
-  print(x)
 
 '''
 pi.set_servo_pulsewidth(4, 1000)
