@@ -370,7 +370,7 @@ if __name__ == "__main__":
 
    while stop > time.time():
       t, p, h = s.read_data()
-      print("h={:.2f} p={:.1f} t={:.2f}".format(h, p/100.0, t))
+      print("h={:.2f} p={:.1f} t={:.2f}".format(h, p/100.00, t))
       time.sleep(0.9)
 
    s.cancel()
