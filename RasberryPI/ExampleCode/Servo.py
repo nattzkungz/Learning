@@ -9,7 +9,7 @@ pulse = None
 for x in range(200):
     pulse = x * 10
     time.sleep(0.2)
-    set_servo_pulsewidth(4, pulse)
+    pi.set_servo_pulsewidth(4, pulse)
     pass
 
 
