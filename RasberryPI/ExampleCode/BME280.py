@@ -370,7 +370,7 @@ if __name__ == "__main__":
 
    while stop > time.time():
       t, p, h = s.read_data()
-      print("h={:.2f} p={:.2f} t={:.2f}".format(h, p/100.0, t))
+      print("h={:.2f} p={:.2f} t={:.2f}".format(h, p/100.0, t)) #:.2f set decimal to 2 places
       time.sleep(0.9)
 
    s.cancel()
