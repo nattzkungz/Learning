@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import time
+import math
 
 # BME280.py
 # 2016-08-05
