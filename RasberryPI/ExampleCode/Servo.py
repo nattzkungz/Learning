@@ -8,6 +8,12 @@ for x in range(6):
     print(x+1)
     pass
 
+fruits = ["apple", "banana", "cherry"]
+for x in fruits:
+  if x == "banana":
+    continue
+  print(x)
+
 '''
 pi.set_servo_pulsewidth(4, 1000)
 time.sleep(2)
