@@ -94,7 +94,7 @@ class sensor:
    _os_ms = [0, 1, 2, 4, 8, 16]
 
    def __init__(self, pi, sampling=OVER_SAMPLE_1, interface=I2C,
-                   bus=1, address=6x76,
+                   bus=1, address=0x76,
                    channel=0, baud=10000000, flags=0):
       """
       Instantiate with the Pi.
