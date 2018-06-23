@@ -23,6 +23,10 @@ There seemed to be a discrepancy between the documented interface
 method of reading the trimming parameter H5 and that used by the
 example code.  I have tried to follow the documented interface.
 """
+# Variables
+getAltitude = None
+sea_press = 1013.25
+
 # Interface
 
 I2C=0
@@ -370,7 +374,8 @@ if __name__ == "__main__":
 
    while stop > time.time():
       t, p, h = s.read_data()
-      print("h={:.2f} p={:.2f} t={:.2f}".format(h, p/100.0, t)) #:.2f set decimal to 2 places
+      getAltitude = ((math.pow((sea_press / p), 1/5.257) - 1.0) * (t + 273.15)) / 0.0065; #Pressure to Altitude Equation
+      print("h={:.2f} p={:.2f} t={:.2f} Alt={:.1f}".format(h, p/100.0, t, getAltitude)) #:.2f set decimal to 2 places
       time.sleep(0.9)
 
    s.cancel()
