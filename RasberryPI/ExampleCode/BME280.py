@@ -352,6 +352,7 @@ class sensor:
 
          self.h = None
 
+#stop sensor
 if __name__ == "__main__":
 
    import time
@@ -365,7 +366,7 @@ if __name__ == "__main__":
 
    s = BME280.sensor(pi)
 
-   stop = time.time() + 10
+   stop = time.time() + 60
 
    while stop > time.time():
       t, p, h = s.read_data()
