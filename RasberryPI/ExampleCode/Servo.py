@@ -4,7 +4,7 @@ import pigpio
 
 pi = pigpio.pi() # Connect to local Pi.
 
-int pulse
+pulse = None
 
 for x in range(200):
     pulse = x * 10
