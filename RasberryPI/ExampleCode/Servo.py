@@ -7,7 +7,44 @@ pi = pigpio.pi() # Connect to local Pi.
 pulse = None
 gpioServo = 4
 servoPos = None
+highVisible = 0
 
+for x in range(21):
+    if x == 21:
+        servoPos = servoPos * 9
+        pi.set_servo_pulsewidth(gpioServo, servoPos)
+        break
+    else :
+        pulse = (x * 100)+500   #turn  servo 100 pulse from 500-2500
+        pi.set_servo_pulsewidth(gpioServo, pulse)
+        print(servoPos)
+        time.sleep(0.4)
+        vis = sensor.readVisible()
+        IR = sensor.readIR()
+        UV = sensor.readUV()
+        uvIndex = UV / 100.0
+        if highVisible < uvIndex:
+            servoPos = x
+            highVisible = uvIndex
+            pass
+        print('SunLight Sensor read at time: %s' % datetime.now())
+        print '		Vis:             ' + str(vis)
+        print '		IR:              ' + str(IR)
+        print '		UV Index:        ' + str(uvIndex)
+
+        if uvIndex <= 3 :
+            print "Warning:" + "Wear Sun Glass; Low UV"
+        elif uvIndex > 3 and uvIndex <= 6 :
+            print "Warning:" + "Take cover when avalible; Moderate UV"
+        elif uvIndex > 6 and uvIndex >= 8 :
+            print "Warning:" + "Apply SPF 30+ sunscreen, don't stay out more than 3 hours; High UV"
+        elif uvIndex > 8 and uvIndex >= 11 :
+            print "Warning:" + "Do not stay in the sun for too long; Very High UV"
+        else :
+            print "Warning:" + "Take all Percautions; Extreme UV"
+        pass
+
+'''
 for x in range(21):
     if x == 21:
         break
@@ -18,7 +55,7 @@ for x in range(21):
         print(servoPos)
         time.sleep(0.4)
         pass
-
+'''
 
 '''
 pi.set_servo_pulsewidth(gpioServo, 1000)
