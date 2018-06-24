@@ -5,9 +5,9 @@ from datetime import datetime
 from apscheduler.schedulers.background import BackgroundScheduler
 
 def x():
-    for x in range(10):
-        x = x+1
-        print(x)
+    x = 0
+    x = x+1
+    print(x)
 
 def timeRightnow():
     print (time.time())
