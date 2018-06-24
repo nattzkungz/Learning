@@ -16,6 +16,7 @@ for x in range(21):
     if x == 21:
         servoPos = (servoPos * 100)+500
         pi.set_servo_pulsewidth(gpioServo, servoPos)
+        print(servoPos)
         pi.stop()
         break
     else :
