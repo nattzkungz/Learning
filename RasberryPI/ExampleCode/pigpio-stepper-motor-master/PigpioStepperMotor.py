@@ -1,6 +1,7 @@
 import pigpio
 from time import sleep
 from collections import deque
+from PigpioStepperMotor import StepperMotor, fullStepSequence
 
 
 
