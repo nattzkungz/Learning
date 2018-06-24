@@ -182,7 +182,7 @@ if __name__ == '__main__':
 	scheduler.add_job(blinkLED, 'interval', seconds=5, args=[1,0.250])
 
 	# IOT Jobs are scheduled here (more coming next issue)
-	scheduler.add_job(readSunLight, 'interval', seconds=1)
+	scheduler.add_job(ScanServo, 'interval', seconds=1)
 
     	# start scheduler
 	scheduler.start()
