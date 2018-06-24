@@ -19,5 +19,5 @@ if currentTime - previousTime > interval :
         motor.doCounterclockwiseStep()
         motor.doCounterclockwiseStep()
         motor.doCounterclockwiseStep()
-        else :
-            delayState = False
+    else :
+        delayState = False
