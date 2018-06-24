@@ -22,6 +22,7 @@ if __name__ == '__main__':
     scheduler.add_job(x, 'interval', seconds=3)
     scheduler.add_job(time, 'interval', seconds=2)
     scheduler.start()
+    print time
     print('Press Ctrl+{0} to exit'.format('Break' if os.name == 'nt' else 'C'))
 
     try:
