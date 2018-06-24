@@ -9,7 +9,7 @@ def x():
         x = x+1
         print(x)
 
-def time():
+def timeRightnow():
     print (time.time())
 
 def killLogger():
@@ -20,9 +20,8 @@ def killLogger():
 if __name__ == '__main__':
     scheduler = BackgroundScheduler()
     scheduler.add_job(x, 'interval', seconds=3)
-    scheduler.add_job(time, 'interval', seconds=2)
+    scheduler.add_job(timeRightnow, 'interval', seconds=2)
     scheduler.start()
-    print time
     print('Press Ctrl+{0} to exit'.format('Break' if os.name == 'nt' else 'C'))
 
     try:
