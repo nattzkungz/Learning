@@ -19,7 +19,7 @@ def killLogger():
 if __name__ == '__main__':
     	scheduler = BackgroundScheduler()
         scheduler.add_job(x, 'interval', seconds=3)
-        scheduler.add_job(time, 'interval', second=2)
+        scheduler.add_job(time, 'interval', seconds=2)
 
         scheduler.start()
         print "-----------------"
