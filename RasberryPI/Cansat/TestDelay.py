@@ -7,7 +7,7 @@ y = 0
 
 def x():
     y = y+1
-    print(x)
+    print(y)
 
 def timeRightnow():
     print (time.time())
