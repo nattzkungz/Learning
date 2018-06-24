@@ -45,13 +45,13 @@ class StepperMotor:
 
 
 
-  def doСounterclockwiseStep(self):
+  def doCounterclockwiseStep(self):
     self.deque.rotate(-1)
     self.doStepAndDelay(self.deque[0])
 
 
 
-  def doСlockwiseStep(self):
+  def doClockwiseStep(self):
     self.deque.rotate(1)
     self.doStepAndDelay(self.deque[0])
 
