@@ -3,9 +3,9 @@ import sys
 import os
 from datetime import datetime
 from apscheduler.schedulers.background import BackgroundScheduler
+x = 0
 
 def x():
-    x = 0
     x = x+1
     print(x)
 
