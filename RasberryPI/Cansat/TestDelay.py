@@ -1,8 +1,17 @@
 import time
+import sys
+import os
+from apscheduler.schedulers.background import BackgroundScheduler
 
-if __name__ == "__main__":
-    print (time.time())
+def x():
     for x in range(10):
         x = x+1
         print(x)
-        time.sleep(2)
+
+def time():
+    print (time.time())
+
+if __name__ == '__main__':
+    	scheduler = BackgroundScheduler()
+        scheduler.add_job(x, 'interval', seconds=3)
+        scheduler.add_job(time, 'interval', second=2)
