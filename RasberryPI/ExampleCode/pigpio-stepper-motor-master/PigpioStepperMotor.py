@@ -35,10 +35,10 @@ class StepperMotor:
     pi.set_mode(pin2, pigpio.OUTPUT)
     pi.set_mode(pin3, pigpio.OUTPUT)
     pi.set_mode(pin4, pigpio.OUTPUT)
-    self.pin1 = 6
-    self.pin2 = 13
-    self.pin3 = 19
-    self.pin4 = 26
+    self.pin1 = pin1
+    self.pin2 = pin2
+    self.pin3 = pin3
+    self.pin4 = pin4
     self.pi = pi
     self.delayAfterStep = delayAfterStep
     self.deque = deque(sequence)
