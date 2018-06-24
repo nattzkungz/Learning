@@ -46,6 +46,8 @@ if __name__ == '__main__':
     servoPos = (servoPos * 100)+500
     pi.set_servo_pulsewidth(gpioServo, servoPos)
     print(servoPos)
+    time.sleep(1)
+    pi.set_servo_pulsewidth(gpioServo, 0)
     pi.stop()
 
 '''
