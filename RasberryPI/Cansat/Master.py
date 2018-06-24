@@ -337,7 +337,7 @@ class sensor:
 if __name__ == "__main__":
 
    import time
-   import Master
+   import BME280
    import pigpio
 
    pi = pigpio.pi()
