@@ -1,7 +1,6 @@
 import pigpio
 from time import sleep
 from collections import deque
-from PigpioStepperMotor import StepperMotor, fullStepSequence
 
 
 
@@ -29,7 +28,7 @@ halfStepSequence = (
 
 class StepperMotor:
 
-  def __init__(self, pi, pin1, pin2, pin3, pin4, sequence = halfStepSequence, delayAfterStep = 0.0025):
+  def __init__(self, 6, 13, 19, 26, sequence = halfStepSequence, delayAfterStep = 0.0025):
     if not isinstance(pi, pigpio.pi):
       raise TypeError("Is not pigpio.pi instance.")
     pi.set_mode(pin1, pigpio.OUTPUT)
