@@ -6,11 +6,14 @@ pi = pigpio.pi() # Connect to local Pi.
 
 pulse = None
 gpioServo = 4
+servoPos = None
 
-for x in range(20):
-    pulse = (x * 100)+500   #turn  servo 100 pulse from 500-2500
-    time.sleep(0.2)
+for x in range(40):
+    pulse = (x * 50)+500   #turn  servo 100 pulse from 500-2500
+    servoPos = x*9
     pi.set_servo_pulsewidth(gpioServo, pulse)
+    print(servoPos)
+    time.sleep(1)
     pass
 
 
