@@ -1,5 +1,25 @@
 import time
 import math
+from PigpioStepperMotor import StepperMotor, fullStepSequence
+
+#Grove Sunlight Sensor
+import sys
+import os
+
+sys.path.append('./SDL_Pi_SI1145');
+
+import RPi.GPIO as GPIO
+
+from datetime import datetime
+
+from apscheduler.schedulers.background import BackgroundScheduler
+
+import SDL_Pi_SI1145
+
+sensor = SDL_Pi_SI1145.SDL_Pi_SI1145()
+# Variables StepperMotor
+pi = pigpio.pi()
+motor = StepperMotor(pi, 6, 13, 19, 26, sequence = fullStepSequence)
 
 # Variables BME280
 getAltitude = None
