@@ -3,8 +3,8 @@ from PigpioStepperMotor import StepperMotor, fullStepSequence
 import time
 
 #Variables
-previousTime = time.time()
-interval = 2
+previousTime = 0
+interval = 100
 delaystate = False
 currentTime = time.time()
 pi = pigpio.pi()
