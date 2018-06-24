@@ -3,10 +3,10 @@ import sys
 import os
 from datetime import datetime
 from apscheduler.schedulers.background import BackgroundScheduler
-x = 0
+y = 0
 
 def x():
-    x = x+1
+    y = y+1
     print(x)
 
 def timeRightnow():
