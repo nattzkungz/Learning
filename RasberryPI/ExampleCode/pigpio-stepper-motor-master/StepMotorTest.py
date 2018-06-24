@@ -11,9 +11,9 @@ motor = StepperMotor(pi, 6, 13, 19, 26, sequence = fullStepSequence, delayAfterS
 
 if currentMillis - previousMillis > interval :
 # save the last time the servo turn
-previousMillis = currentMillis
+    previousMillis = currentMillis
     if delaystate = False :
-    delayState = True
+        delayState = True
         for i in range(512):
-        motor.doCounterclockwiseStep()
-        motor.doCounterclockwiseStep()
+            motor.doCounterclockwiseStep()
+            motor.doCounterclockwiseStep()
