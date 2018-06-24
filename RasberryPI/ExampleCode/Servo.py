@@ -9,7 +9,7 @@ gpioServo = 4
 servoPos = None
 
 for x in range(100):
-    if x = 40:
+    if x == 40:
         break
     else :
         pulse = (x * 20)+500   #turn  servo 100 pulse from 500-2500
