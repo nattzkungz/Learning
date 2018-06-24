@@ -5,7 +5,7 @@ from datetime import datetime
 from apscheduler.schedulers.background import BackgroundScheduler
 y = 1
 
-def x():
+def number():
     y++
     print(y)
 
@@ -19,7 +19,7 @@ def killLogger():
 
 if __name__ == '__main__':
     scheduler = BackgroundScheduler()
-    scheduler.add_job(x, 'interval', seconds=3)
+    scheduler.add_job(number, 'interval', seconds=3)
     scheduler.add_job(timeRightnow, 'interval', seconds=2)
     scheduler.start()
     print('Press Ctrl+{0} to exit'.format('Break' if os.name == 'nt' else 'C'))
