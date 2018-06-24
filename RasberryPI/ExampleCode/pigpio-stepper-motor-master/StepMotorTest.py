@@ -3,7 +3,7 @@ from PigpioStepperMotor import StepperMotor, fullStepSequence
 import time
 
 #Variables
-previousTime = 0
+previousTime = time.time()
 interval = 2
 delaystate = False
 currentTime = time.time()
