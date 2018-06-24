@@ -14,7 +14,7 @@ highVisible = 0
 
 for x in range(21):
     if x == 21:
-        servoPos = servoPos * 9
+        servoPos = (servoPos * 100)+500
         pi.set_servo_pulsewidth(gpioServo, servoPos)
         pi.stop()
         break
