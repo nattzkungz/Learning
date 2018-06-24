@@ -29,6 +29,6 @@ if __name__ == '__main__':
         print "-----------------"
 
         print('Press Ctrl+{0} to exit'.format('Break' if os.name == 'nt' else 'C'))
-    	except (KeyboardInterrupt, SystemExit):
+    	if (KeyboardInterrupt, SystemExit):
         	# Not strictly necessary if daemonic mode is enabled but should be done if possible
         	scheduler.shutdown
