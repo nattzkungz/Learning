@@ -1,6 +1,8 @@
 import time
-
+import SDL_Pi_SI1145
 import pigpio
+
+sensor = SDL_Pi_SI1145.SDL_Pi_SI1145()
 
 pi = pigpio.pi() # Connect to local Pi.
 
