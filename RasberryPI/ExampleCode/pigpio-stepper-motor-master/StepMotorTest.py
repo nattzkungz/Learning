@@ -4,7 +4,7 @@ import time
 
 #Variables
 previousTime = 0
-interval = 100
+interval = 0.5
 delaystate = False
 currentTime = time.time()
 pi = pigpio.pi()
