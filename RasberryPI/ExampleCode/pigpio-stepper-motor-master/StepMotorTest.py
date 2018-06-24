@@ -4,7 +4,7 @@ import time
 
 #Variables
 previousTime = 0
-interval = 0.1
+interval = 2
 delaystate = False
 currentTime = time.time()
 pi = pigpio.pi()
@@ -15,6 +15,8 @@ if currentTime - previousTime > interval :
     previousTime = currentTime
     if delaystate == False :
         delayState = True
-        for i in range(512):
+        for i in range(256):
+            motor.doCounterclockwiseStep()
+            motor.doCounterclockwiseStep()
             motor.doCounterclockwiseStep()
             motor.doCounterclockwiseStep()
