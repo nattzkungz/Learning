@@ -6,7 +6,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 y = 1
 
 def number():
-    y++
+    y+=1
     print(y)
 
 def timeRightnow():
