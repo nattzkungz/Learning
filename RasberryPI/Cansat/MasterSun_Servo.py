@@ -10,7 +10,7 @@ servoPos = None
 #Grove Sunlight Sensor
 import sys
 import os
-highVisible = None
+highVisible = 0
 
 sys.path.append('./SDL_Pi_SI1145');
 import time
@@ -123,10 +123,11 @@ def ScanStepMotor():
 def ScanServo():
     for x in range(21):
         if x == 21:
+            servoPos = servoPos * 9
+            pi.set_servo_pulsewidth(gpioServo, servoPos)
             break
         else :
             pulse = (x * 100)+500   #turn  servo 100 pulse from 500-2500
-            servoPos = x*9
             pi.set_servo_pulsewidth(gpioServo, pulse)
             print(servoPos)
             time.sleep(0.4)
@@ -134,6 +135,10 @@ def ScanServo():
             IR = sensor.readIR()
             UV = sensor.readUV()
             uvIndex = UV / 100.0
+            if highVisible < uvIndex:
+                servoPos = x
+                highVisible = uvIndex
+                pass
             print('SunLight Sensor read at time: %s' % datetime.now())
             print '		Vis:             ' + str(vis)
             print '		IR:              ' + str(IR)
