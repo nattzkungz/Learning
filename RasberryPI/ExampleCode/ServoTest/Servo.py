@@ -16,6 +16,7 @@ for x in range(21):
     if x == 21:
         servoPos = servoPos * 9
         pi.set_servo_pulsewidth(gpioServo, servoPos)
+        pi.stop()
         break
     else :
         pulse = (x * 100)+500   #turn  servo 100 pulse from 500-2500
@@ -73,5 +74,3 @@ time.sleep(2)
 # switch servo off
 pi.set_servo_pulsewidth(4, 0);
 '''
-
-pi.stop()
