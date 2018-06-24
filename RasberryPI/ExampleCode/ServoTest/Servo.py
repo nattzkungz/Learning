@@ -43,10 +43,10 @@ for x in range(21):
     pass
 
 if __name__ == '__main__':
-servoPos = (servoPos * 100)+500
-pi.set_servo_pulsewidth(gpioServo, servoPos)
-print(servoPos)
-pi.stop()
+    servoPos = (servoPos * 100)+500
+    pi.set_servo_pulsewidth(gpioServo, servoPos)
+    print(servoPos)
+    pi.stop()
 
 '''
 for x in range(21):
