@@ -8,13 +8,16 @@ pulse = None
 gpioServo = 4
 servoPos = None
 
-for x in range(40):
-    pulse = (x * 50)+500   #turn  servo 100 pulse from 500-2500
-    servoPos = x*9
-    pi.set_servo_pulsewidth(gpioServo, pulse)
-    print(servoPos)
-    time.sleep(1)
-    pass
+for x in range(100):
+    if x = 40:
+        break
+    else :
+        pulse = (x * 20)+500   #turn  servo 100 pulse from 500-2500
+        servoPos = x*9
+        pi.set_servo_pulsewidth(gpioServo, pulse)
+        print(servoPos)
+        time.sleep(0.4)
+        pass
 
 
 '''
