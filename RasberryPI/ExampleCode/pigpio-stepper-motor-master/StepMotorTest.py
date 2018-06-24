@@ -1,5 +1,6 @@
 import pigpio
 from PigpioStepperMotor import StepperMotor, fullStepSequence
+import time
 
 #Variables
 previousTime = 0
