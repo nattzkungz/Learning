@@ -18,14 +18,13 @@ motor = StepperMotor(pi, 6, 13, 19, 26, sequence = fullStepSequence)
 for i in range(256):
   motor.doCounterclockwiseStep()
   motor.doCounterclockwiseStep()
-  time.sleep(0.1)
   motor.doCounterclockwiseStep()
   motor.doCounterclockwiseStep()
   for x in range(21):
     pulse = (x * 100)+500   #turn  servo 100 pulse from 500-2500
     pi.set_servo_pulsewidth(gpioServo, pulse)
     print(servoPos)
-    time.sleep(0.05)
+    time.sleep(0.1)
     vis = sensor.readVisible()
     IR = sensor.readIR()
     UV = sensor.readUV()
