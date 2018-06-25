@@ -1,6 +1,7 @@
 import time
 import SDL_Pi_SI1145
 import pigpio
+from PigpioStepperMotor import StepperMotor, fullStepSequence
 
 sensor = SDL_Pi_SI1145.SDL_Pi_SI1145()
 from datetime import datetime
@@ -11,18 +12,26 @@ pulse = None
 gpioServo = 4
 servoPos = None
 highVisible = 0
+stepPos = None
 
-for x in range(21):
+motor = StepperMotor(pi, 6, 13, 19, 26, sequence = fullStepSequence)
+for i in range(256):
+  motor.doCounterclockwiseStep()
+  motor.doCounterclockwiseStep()
+  motor.doCounterclockwiseStep()
+  motor.doCounterclockwiseStep()
+  for x in range(21):
     pulse = (x * 100)+500   #turn  servo 100 pulse from 500-2500
     pi.set_servo_pulsewidth(gpioServo, pulse)
     print(servoPos)
-    time.sleep(0.4)
+    time.sleep(0.05)
     vis = sensor.readVisible()
     IR = sensor.readIR()
     UV = sensor.readUV()
     uvIndex = UV / 100.0
     if highVisible < uvIndex:
         servoPos = x
+        stepPos = i
         highVisible = uvIndex
         pass
     print('SunLight Sensor read at time: %s' % datetime.now())
@@ -44,7 +53,13 @@ for x in range(21):
 
 if __name__ == '__main__':
     servoPos = (servoPos * 100)+500
+    stepPos = 256 - stepPos
     pi.set_servo_pulsewidth(gpioServo, servoPos)
+    for i in range(256):
+      motor.doClockwiseStep()
+      motor.doClockwiseStep()
+      motor.doClockwiseStep()
+      motor.doClockwiseStep()
     print(servoPos)
     time.sleep(1)
     pi.set_servo_pulsewidth(gpioServo, 0)
