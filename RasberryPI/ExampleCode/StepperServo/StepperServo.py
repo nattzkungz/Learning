@@ -15,21 +15,8 @@ highVisible = 0
 stepPos = None
 
 motor = StepperMotor(pi, 6, 13, 19, 26, sequence = fullStepSequence)
-for i in range(128):
+for i in range(512):
   motor.doCounterclockwiseStep()
-  time.sleep(0.0025)
-  motor.doCounterclockwiseStep()
-  time.sleep(0.0025)
-  motor.doCounterclockwiseStep()
-  time.sleep(0.0025)
-  motor.doCounterclockwiseStep()
-  time.sleep(0.0025)
-  motor.doCounterclockwiseStep()
-  time.sleep(0.0025)
-  motor.doCounterclockwiseStep()
-  time.sleep(0.0025)
-  motor.doCounterclockwiseStep()
-  time.sleep(0.0025)
   motor.doCounterclockwiseStep()
   for x in range(21):
     pulse = (x * 100)+500   #turn  servo 100 pulse from 500-2500
