@@ -1,12 +1,8 @@
 import time
 import SDL_Pi_SI1145
-import pigpio
-from PigpioStepperMotor import StepperMotor, fullStepSequence
 
 sensor = SDL_Pi_SI1145.SDL_Pi_SI1145()
 from datetime import datetime
-
-pi = pigpio.pi() # Connect to local Pi.
 
 pulse = None
 gpioServo = 4
@@ -14,14 +10,19 @@ servoPos = None
 highVisible = 0
 stepPos = None
 
+import pigpio
+from PigpioStepperMotor import StepperMotor, fullStepSequence
+
+pi = pigpio.pi()
 motor = StepperMotor(pi, 6, 13, 19, 26, sequence = fullStepSequence)
+
 for i in range(512):
   motor.doCounterclockwiseStep()
   motor.doCounterclockwiseStep()
   for x in range(21):
-    pulse = (x * 100)+500   #turn  servo 100 pulse from 500-2500
-    pi.set_servo_pulsewidth(gpioServo, pulse)
-    time.sleep(0.025)
+    #pulse = (x * 100)+500   #turn  servo 100 pulse from 500-2500
+    #pi.set_servo_pulsewidth(gpioServo, pulse)
+    #time.sleep(0.025)
     vis = sensor.readVisible()
     IR = sensor.readIR()
     UV = sensor.readUV()
@@ -45,7 +46,7 @@ for i in range(512):
         print "Warning:" + "Do not stay in the sun for too long; Very High UV"
     else :
         print "Warning:" + "Take all Percautions; Extreme UV"
-
+'''
 if __name__ == '__main__':
     servoPos = (servoPos * 100)+500
     stepPos = 256 - stepPos
@@ -59,30 +60,4 @@ if __name__ == '__main__':
     time.sleep(1)
     pi.set_servo_pulsewidth(gpioServo, 0)
     pi.stop()
-
-'''
-for x in range(21):
-    if x == 21:
-        break
-    else :
-        pulse = (x * 100)+500   #turn  servo 100 pulse from 500-2500
-        servoPos = x*9
-        pi.set_servo_pulsewidth(gpioServo, pulse)
-        print(servoPos)
-        time.sleep(0.4)
-        pass
-'''
-
-'''
-pi.set_servo_pulsewidth(gpioServo, 1000)
-time.sleep(2)
-pi.set_servo_pulsewidth(gpioServo, 1500)
-time.sleep(2)
-pi.set_servo_pulsewidth(gpioServo, 2000)
-time.sleep(2)
-pi.set_servo_pulsewidth(gpioServo, 1500)
-time.sleep(2)
-
-# switch servo off
-pi.set_servo_pulsewidth(4, 0);
 '''
