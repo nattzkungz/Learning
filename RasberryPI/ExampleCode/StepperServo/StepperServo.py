@@ -18,11 +18,15 @@ motor = StepperMotor(pi, 6, 13, 19, 26, sequence = fullStepSequence)
 for i in range(128):
   motor.doCounterclockwiseStep()
   motor.doCounterclockwiseStep()
-
+  motor.doCounterclockwiseStep()
+  motor.doCounterclockwiseStep()
+  motor.doCounterclockwiseStep()
+  motor.doCounterclockwiseStep()
+  motor.doCounterclockwiseStep()
+  motor.doCounterclockwiseStep()
   for x in range(21):
     pulse = (x * 100)+500   #turn  servo 100 pulse from 500-2500
     pi.set_servo_pulsewidth(gpioServo, pulse)
-    print(servoPos)
     time.sleep(0.1)
     vis = sensor.readVisible()
     IR = sensor.readIR()
@@ -32,7 +36,6 @@ for i in range(128):
         servoPos = x
         stepPos = i
         highVisible = uvIndex
-        pass
     print('SunLight Sensor read at time: %s' % datetime.now())
     print '		Vis:             ' + str(vis)
     print '		IR:              ' + str(IR)
@@ -48,7 +51,6 @@ for i in range(128):
         print "Warning:" + "Do not stay in the sun for too long; Very High UV"
     else :
         print "Warning:" + "Take all Percautions; Extreme UV"
-    pass
 
 if __name__ == '__main__':
     servoPos = (servoPos * 100)+500
