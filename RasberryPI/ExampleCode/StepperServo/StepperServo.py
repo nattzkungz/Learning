@@ -18,6 +18,7 @@ motor = StepperMotor(pi, 6, 13, 19, 26, sequence = fullStepSequence, delayAfterS
 
 for i in range(1024):
   motor.doClockwiseStep()
+  time.sleep(0.1)
   for x in range(21):
     #pulse = (x * 100)+500   #turn  servo 100 pulse from 500-2500
     #pi.set_servo_pulsewidth(gpioServo, pulse)
