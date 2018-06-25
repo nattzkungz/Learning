@@ -18,6 +18,7 @@ motor = StepperMotor(pi, 6, 13, 19, 26, sequence = fullStepSequence)
 for i in range(256):
   motor.doCounterclockwiseStep()
   motor.doCounterclockwiseStep()
+  time.sleep(0.1)
   motor.doCounterclockwiseStep()
   motor.doCounterclockwiseStep()
   for x in range(21):
