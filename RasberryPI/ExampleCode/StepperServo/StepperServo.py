@@ -14,7 +14,7 @@ import pigpio
 from PigpioStepperMotor import StepperMotor, fullStepSequence
 
 pi = pigpio.pi()
-motor = StepperMotor(pi, 6, 13, 19, 26, sequence = fullStepSequence)
+motor = StepperMotor(pi, 6, 13, 19, 26, sequence = fullStepSequence, delayAfterStep = 0.05)
 
 for i in range(512):
   motor.doCounterclockwiseStep()
