@@ -16,9 +16,8 @@ from PigpioStepperMotor import StepperMotor, fullStepSequence
 pi = pigpio.pi()
 motor = StepperMotor(pi, 6, 13, 19, 26, sequence = fullStepSequence, delayAfterStep = 0.05)
 
-for i in range(512):
-  motor.doCounterclockwiseStep()
-  motor.doCounterclockwiseStep()
+for i in range(1024):
+  motor.doClockwiseStep()
   for x in range(21):
     #pulse = (x * 100)+500   #turn  servo 100 pulse from 500-2500
     #pi.set_servo_pulsewidth(gpioServo, pulse)
