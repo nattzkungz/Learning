@@ -10,6 +10,9 @@ servoPos = None
 #Grove Sunlight Sensor
 import sys
 import os
+pulse = None
+gpioServo = 4
+servoPos = None
 highVisible = 0
 
 sys.path.append('./SDL_Pi_SI1145');
