@@ -11,7 +11,7 @@ highVisible = 0
 stepPos = None
 
 import pigpio
-from PigpioStepperMotor import StepperMotor, fullStepSequence
+from PigpioStepperMotor import StepperMotor#, fullStepSequence
 
 pi = pigpio.pi()
 motor = StepperMotor(pi, 6, 13, 19, 26, sequence = halfStepSequence, delayAfterStep = 0.05)
