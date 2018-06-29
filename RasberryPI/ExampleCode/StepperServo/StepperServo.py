@@ -14,15 +14,14 @@ import pigpio
 from PigpioStepperMotor import StepperMotor, fullStepSequence
 
 pi = pigpio.pi()
-motor = StepperMotor(pi, 6, 13, 19, 26, sequence = fullStepSequence, delayAfterStep = 0.05)
+motor = StepperMotor(pi, 6, 13, 19, 26, sequence = halfStepSequence, delayAfterStep = 0.05)
 
-for i in range(1024):
-  for y in range(1024):
-      motor.doClockwiseStep()
+for i in range(2048):
+  motor.doCounterclockwiseStep()
   for x in range(21):
-    #pulse = (x * 100)+500   #turn  servo 100 pulse from 500-2500
-    #pi.set_servo_pulsewidth(gpioServo, pulse)
-    #time.sleep(0.025)
+    pulse = (x * 100)+500   #turn  servo 100 pulse from 500-2500
+    pi.set_servo_pulsewidth(gpioServo, pulse)
+    time.sleep(0.025)
     vis = sensor.readVisible()
     IR = sensor.readIR()
     UV = sensor.readUV()
