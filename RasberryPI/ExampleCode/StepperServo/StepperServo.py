@@ -11,13 +11,12 @@ highVisible = 0
 stepPos = None
 
 import pigpio
-from PigpioStepperMotor import StepperMotor, halfStepSequence
+from PigpioStepperMotor import StepperMotor, fullStepSequence
 
 pi = pigpio.pi()
-motor = StepperMotor(pi, 6, 13, 19, 26, sequence = halfStepSequence)
+motor = StepperMotor(pi, 6, 13, 19, 26, sequence = fullStepSequence)
 for i in range(2048):
-  motor.doCounterclockwiseStep()
-  time.sleep(1)
+  motor.doClockwiseStep()
   for x in range(21):
     pulse = (x * 100)+500   #turn  servo 100 pulse from 500-2500
     pi.set_servo_pulsewidth(gpioServo, pulse)
