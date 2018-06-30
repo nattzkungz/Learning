@@ -17,7 +17,7 @@ from PigpioStepperMotor import StepperMotor, fullStepSequence
 
 def Stepper():
     pi = pigpio.pi()
-    motor = StepperMotor(pi, 6, 13, 19, 26, sequence = fullStepSequence)
+    motor = StepperMotor(pi, 6, 13, 19, 26, sequence = fullStepSequence, delayAfterStep = 0)
     for i in range(2048):
         motor.doClockwiseStep()
 
@@ -62,10 +62,11 @@ def Sensor():
 
 if __name__ == '__main__':
     scheduler = BackgroundScheduler()
+    scheduler = BlockingScheduler(executors={'default': ThreadPoolExecutor(2)})
     scheduler.add_job(Sensor, 'interval', seconds=0.025)
-    scheduler.add_job(Stepper, 'interval', seconds=0.025)
-    scheduler.add_job(Servo, 'interval', seconds=0.025)
-    scheduler.add_job(servoDelay, 'interval', seconds=0.025)
+    scheduler.add_job(Stepper, 'interval', seconds=0.03)
+    scheduler.add_job(Servo, 'interval', seconds=0.04)
+    scheduler.add_job(servoDelay, 'interval', seconds=0.05)
     scheduler.start()
     try:
         # This is here to simulate application activity (which keeps the main thread alive).
