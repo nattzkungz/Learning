@@ -62,13 +62,6 @@ def Sensor():
 
 if __name__ == '__main__':
     scheduler = BackgroundScheduler({
-    'apscheduler.jobstores.mongo': {
-         'type': 'mongodb'
-    },
-    'apscheduler.jobstores.default': {
-        'type': 'sqlalchemy',
-        'url': 'sqlite:///jobs.sqlite'
-    },
     'apscheduler.executors.default': {
         'class': 'apscheduler.executors.pool:ThreadPoolExecutor',
         'max_workers': '20'
