@@ -67,10 +67,10 @@ if __name__ == '__main__':
     scheduler.add_job(Servo, 'interval', seconds=0.025)
     scheduler.add_job(servoDelay, 'interval', seconds=0.025)
     scheduler.start()
-        try:
-        	# This is here to simulate application activity (which keeps the main thread alive).
-        	while True:
-            		time.sleep(2)
-    	except (KeyboardInterrupt, SystemExit):
-        	# Not strictly necessary if daemonic mode is enabled but should be done if possible
-        	scheduler.shutdown
+    try:
+        # This is here to simulate application activity (which keeps the main thread alive).
+        while True:
+                time.sleep(2)
+    except (KeyboardInterrupt, SystemExit):
+        # Not strictly necessary if daemonic mode is enabled but should be done if possible
+        scheduler.shutdown
