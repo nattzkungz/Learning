@@ -15,24 +15,6 @@ stepPos = None
 import pigpio
 from PigpioStepperMotor import StepperMotor, fullStepSequence
 
-def Stepper():
-    pi = pigpio.pi()
-    motor = StepperMotor(pi, 6, 13, 19, 26, sequence = fullStepSequence, delayAfterStep = 0)
-    for i in range(2048):
-        motor.doClockwiseStep()
-
-def Servo():
-  for x in range(21):
-    pulse = (x * 100)+500   #turn  servo 100 pulse from 500-2500
-    pi.set_servo_pulsewidth(gpioServo, pulse)
-    time.sleep(0.025)
-
-def servoDelay():
-    if pulse == 2500:
-        delay = 0.5
-    else:
-        delay = 0.025
-    print(delay)
 def Sensor():
         vis = sensor.readVisible()
         IR = sensor.readIR()
@@ -57,6 +39,26 @@ def Sensor():
             print "Warning:" + "Do not stay in the sun for too long; Very High UV"
         else :
             print "Warning:" + "Take all Percautions; Extreme UV"
+
+def Stepper():
+    pi = pigpio.pi()
+    motor = StepperMotor(pi, 6, 13, 19, 26, sequence = fullStepSequence, delayAfterStep = 0)
+    for i in range(2048):
+        motor.doClockwiseStep()
+
+def Servo():
+  for x in range(21):
+    pulse = (x * 100)+500   #turn  servo 100 pulse from 500-2500
+    pi.set_servo_pulsewidth(gpioServo, pulse)
+    time.sleep(0.025)
+
+def servoDelay():
+    if pulse == 2500:
+        delay = 0.5
+    else:
+        delay = 0.025
+    print(delay)
+
 
 
 
