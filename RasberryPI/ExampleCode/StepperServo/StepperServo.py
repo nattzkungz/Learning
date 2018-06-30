@@ -61,8 +61,7 @@ def Sensor():
 
 
 if __name__ == '__main__':
-    scheduler = BackgroundScheduler()
-    scheduler = BlockingScheduler(executors={'default': ThreadPoolExecutor(2)})
+    scheduler = BackgroundScheduler({'apscheduler.job_defaults.max_instances': '22'})
     scheduler.add_job(Sensor, 'interval', seconds=0.025)
     scheduler.add_job(Stepper, 'interval', seconds=0.03)
     scheduler.add_job(Servo, 'interval', seconds=0.04)
