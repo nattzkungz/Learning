@@ -61,7 +61,26 @@ def Sensor():
 
 
 if __name__ == '__main__':
-    scheduler = BackgroundScheduler({'apscheduler.job_defaults.max_instances': '22'})
+    scheduler = BackgroundScheduler({
+    'apscheduler.jobstores.mongo': {
+         'type': 'mongodb'
+    },
+    'apscheduler.jobstores.default': {
+        'type': 'sqlalchemy',
+        'url': 'sqlite:///jobs.sqlite'
+    },
+    'apscheduler.executors.default': {
+        'class': 'apscheduler.executors.pool:ThreadPoolExecutor',
+        'max_workers': '20'
+    },
+    'apscheduler.executors.processpool': {
+        'type': 'processpool',
+        'max_workers': '5'
+    },
+    'apscheduler.job_defaults.coalesce': 'false',
+    'apscheduler.job_defaults.max_instances': '3',
+    'apscheduler.timezone': 'UTC',
+    })
     scheduler.add_job(Sensor, 'interval', seconds=0.025)
     scheduler.add_job(Stepper, 'interval', seconds=0.03)
     scheduler.add_job(Servo, 'interval', seconds=0.04)
