@@ -1,10 +1,8 @@
-stepperWiringPi = require("../src/stepper-wiringpi")
-pinIN1 = 6
-pinIN2 = 13
-pinIN3 = 19
-pinIN4 = 26
-motor = stepperWiringPi.setup(64, pinIN1, pinIN2, pinIN3, pinIN4)
+import pigpio
+from PigpioStepperMotor import StepperMotor, fullStepSequence
 
-motor.setSpeed(60)
-motor.step(64)
-motor.stop()
+pi = pigpio.pi()
+motor = StepperMotor(pi, 6, 13, 19, 26, sequence = fullStepSequence)
+for i in range(128):
+  motor.doClockwiseStep()
+  motor.doClockwiseStep()
