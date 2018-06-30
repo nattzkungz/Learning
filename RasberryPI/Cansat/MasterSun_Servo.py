@@ -82,8 +82,8 @@ def readSunLight():
             print "Warning:" + "Take all Percautions; Extreme UV"
 
         #uvIrradiance
-        uvIrradiance = uvIndex * 0.025
-        print "Uv Irradiance: " + uvIrradiance
+        #uvIrradiance = uvIndex * 0.025
+        #print "Uv Irradiance: " + uvIrradiance
 
 	returnValue = []
 	returnValue.append(vis)
