@@ -77,9 +77,9 @@ if __name__ == '__main__':
     'apscheduler.timezone': 'UTC',
     })
     scheduler.add_job(Sensor, 'interval', seconds=0.025)
-    scheduler.add_job(Stepper, 'interval', seconds=0.03)
-    scheduler.add_job(Servo, 'interval', seconds=0.04)
-    scheduler.add_job(servoDelay, 'interval', seconds=0.05)
+    #scheduler.add_job(Stepper, 'interval', seconds=0.03)
+    #scheduler.add_job(Servo, 'interval', seconds=0.04)
+    #scheduler.add_job(servoDelay, 'interval', seconds=0.05)
     scheduler.start()
     try:
         # This is here to simulate application activity (which keeps the main thread alive).
