@@ -67,20 +67,8 @@ def servoDelay():
 
 
 if __name__ == '__main__':
-    scheduler = BackgroundScheduler('''{
-    'apscheduler.executors.default': {
-        'class': 'apscheduler.executors.pool:ThreadPoolExecutor',
-        'max_workers': '20'
-    },
-    'apscheduler.executors.processpool': {
-        'type': 'processpool',
-        'max_workers': '5'
-    },
-    'apscheduler.job_defaults.coalesce': 'false',
-    'apscheduler.job_defaults.max_instances': '3',
-    'apscheduler.timezone': 'UTC',
-    }''')
-    scheduler.add_job(Sensor, 'interval', seconds=0.025)
+    scheduler = BackgroundScheduler()
+    scheduler.add_job(Sensor, 'interval', seconds=0.1)
     #scheduler.add_job(Stepper, 'interval', seconds=0.03)
     #scheduler.add_job(Servo, 'interval', seconds=0.04)
     #scheduler.add_job(servoDelay, 'interval', seconds=0.05)
