@@ -39,11 +39,11 @@ def Sensor():
             print "Warning:" + "Do not stay in the sun for too long; Very High UV"
         else :
             print "Warning:" + "Take all Percautions; Extreme UV"
-    returnValue = []
-	returnValue.append(vis)
-	returnValue.append(IR)
-	returnValue.append(uvIndex)
-	return returnValue
+        returnValue = []
+    	returnValue.append(vis)
+    	returnValue.append(IR)
+    	returnValue.append(uvIndex)
+    	return returnValue
 def Stepper():
     pi = pigpio.pi()
     motor = StepperMotor(pi, 6, 13, 19, 26, sequence = fullStepSequence, delayAfterStep = 0)
