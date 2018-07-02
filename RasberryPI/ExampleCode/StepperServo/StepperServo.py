@@ -13,8 +13,8 @@ stepPos = None
 import pigpio
 from PigpioStepperMotor import StepperMotor, fullStepSequence
 
-for y in range(128)
-    for z in range(8)
+for y in range(128):
+    for z in range(8):
     motor.doClockwiseStep()
 for x in range(21):
     pulse = (x * 100)+500   #turn  servo 100 pulse from 500-2500
