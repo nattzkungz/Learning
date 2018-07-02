@@ -1,5 +1,6 @@
 import time
 import SDL_Pi_SI1145
+import os
 
 sensor = SDL_Pi_SI1145.SDL_Pi_SI1145()
 from datetime import datetime
@@ -17,6 +18,7 @@ pi = pigpio.pi()
 motor = StepperMotor(pi, 6, 13, 19, 26, sequence = fullStepSequence,  delayAfterStep = 0.2)
 for y in range(128):
     motor.doClockwiseStep()
+    os.system("pause")
     for x in range(21):
         pulse = (x * 100)+500   #turn  servo 100 pulse from 500-2500
         pi.set_servo_pulsewidth(gpioServo, pulse)
