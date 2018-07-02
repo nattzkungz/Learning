@@ -15,7 +15,7 @@ from PigpioStepperMotor import StepperMotor, fullStepSequence
 
 for y in range(128):
     for z in range(8):
-    motor.doClockwiseStep()
+        motor.doClockwiseStep()
 for x in range(21):
     pulse = (x * 100)+500   #turn  servo 100 pulse from 500-2500
     pi.set_servo_pulsewidth(gpioServo, pulse)
