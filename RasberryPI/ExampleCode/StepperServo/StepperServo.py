@@ -13,6 +13,9 @@ stepPos = None
 import pigpio
 from PigpioStepperMotor import StepperMotor, fullStepSequence
 
+pi = pigpio.pi()
+motor = StepperMotor(pi, 6, 13, 19, 26)
+
 for y in range(128):
     for z in range(8):
         motor.doClockwiseStep()
